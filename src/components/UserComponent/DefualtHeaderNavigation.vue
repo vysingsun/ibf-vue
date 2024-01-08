@@ -10,7 +10,8 @@ import { RouterLink, RouterView } from 'vue-router';
                     <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Me a Shoes</span>
                 </a>
                 <div class="flex items-center lg:order-2">
-                    <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a>
+                    <button @click="logOut" class=" text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
+                        Logout</button>
                     <a href="#" class="text-white bg-[#ffbe1c] hover:bg-[#f2b31a] focus:ring-4 focus:ring-[#fff81a] font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-[#ffbe1c] focus:outline-none dark:focus:ring-primary-800">Get started</a>
                     <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
@@ -46,10 +47,28 @@ import { RouterLink, RouterView } from 'vue-router';
     <RouterView/>
 </template>
 <script>
+import api from '@/api'
+import axios from 'axios';
 import { initFlowbite } from 'flowbite';
 export default {
+    data(){
+        return{
+
+        }
+    },
     mounted(){
-    initFlowbite();
-  }
+        initFlowbite();
+    },
+    methods: {
+        async logOut(){
+            try {
+                this.$store.dispatch('auth/setToken', null);
+                this.$store.dispatch('auth/setType_of_user', null);
+                this.$router.push('/login')
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
 }
 </script>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from './store/index';
 const apiClient = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api',
+  baseURL: 'http://54.253.108.38/api',
   headers: {
     'Content-Type': 'application/json'
   }
@@ -34,4 +34,5 @@ export default {
   ResetPassword(credentials) {
     return apiClient.post('/reset-password', credentials)
   },
+  
 }

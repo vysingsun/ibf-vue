@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createStore } from "vuex";
 import createPersistedState from "vuex-plugin-persistedstate";
 const store = createStore({
@@ -22,7 +23,8 @@ const store = createStore({
                 },
                 setType_of_user({commit }, type_of_user) {
                     commit("setType_of_user", type_of_user)
-                }
+                },
+                
             },
             getters: {
                 isAuthenticated: (state) => state.token !== null,
