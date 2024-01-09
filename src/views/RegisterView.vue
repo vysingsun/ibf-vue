@@ -80,7 +80,7 @@
             async register(e){
                 e.preventDefault()
                 this.loading = true
-                await axios.post("http://13.54.181.188/api/register",{
+                await axios.post("http://3.106.247.189/api/register",{
 
                     name: this.name,
                     email: this.email,
